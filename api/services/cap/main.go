@@ -8,13 +8,14 @@ import (
 	"syscall"
 
 	"github.com/4925k/kurakani/foundation/logger"
+	"github.com/4925k/kurakani/foundation/web"
 )
 
 func main() {
 	var log *logger.Logger
 
 	traceIDFn := func(ctx context.Context) string {
-		return "" // TODO: IMPLEMENT TRACE ID
+		return web.GetTraceID(ctx).String()
 	}
 
 	log = logger.New(os.Stdout, logger.LevelInfo, "CAP", traceIDFn)
