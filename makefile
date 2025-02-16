@@ -9,6 +9,9 @@ SHELL = $(if $(wildcard $(SHELL_PATH)),/bin/ash,/bin/bash)
 run: 
 	go run api/services/cap/main.go | go run api/tooling/logfmt/main.go
 
+test-status:
+	curl -i -X GET http://localhost:3000/status
+
 
 # ==============================================================================
 # Modules support
